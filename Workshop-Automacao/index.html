@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+</head>
+<body>
+    <div class="logo-container">
+        <a href="https://br.nttdata.com/" target="_blank">
+            <img src="Imagens/LogoGlobalNTTDATA.png" alt="Imagem da web" width="350" class="logo">
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>Registro de Usuário</h1>
+        <form onsubmit="return abrirAlerta(event)">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite Seu Nome" required pattern="^[A-Za-zÀ-ÿ]+([ ]?[A-Za-zÀ-ÿ]+)*$" title="O nome pode conter apenas letras e espaços.">
+            </div>
+        
+            <div class="form-group">
+                <label for="sobrenome">Sobrenome:</label>
+                <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite Seu Sobrenome" required pattern="^[A-Za-zÀ-ÿ]+([ ]?[A-Za-zÀ-ÿ]+)*$" title="O sobrenome pode conter apenas letras e espaços.">
+            </div>
+            
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(xx) xxxxx-xxxx" required>
+            </div>
+
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" placeholder="Digite Seu Cep" required>
+            </div>
+
+            <div class="form-group">
+                <label>Sexo:</label>
+                <div class="checkbox-group">
+                    <label><input type="radio" name="sexo" value="masculino" required> Masculino</label>
+                    <label><input type="radio" name="sexo" value="feminino" required> Feminino</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="escolaridade">Escolaridade:</label>
+                <select id="escolaridade" name="escolaridade" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="medio_incompleto">Ensino Médio incompleto</option>
+                    <option value="medio_completo">Ensino Médio completo</option>
+                    <option value="superior_incompleto">Ensino Superior incompleto</option>
+                    <option value="superior_completo">Ensino Superior completo</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="tecnologias">Tecnologias:</label>
+                <select name="tecnologias" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Python">Python</option>
+                    <option value="outras">Outras</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="termos_condicoes">
+                    <input type="checkbox" id="termos_condicoes" name="termos_condicoes" required>
+                    Aceito os termos e condições.
+                </label><br><br>
+            </div>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#telefone').mask('(00) 00000-0000'); // Máscara de telefone
+            $('#cep').mask('00000-000'); // Máscara de CEP
+        });
+
+        function abrirAlerta(event) {
+            event.preventDefault(); // Impede o envio automático do formulário
+            
+            // Validação de Data de Nascimento
+            const dataNascimento = document.getElementById("data_nascimento").value;
+            const dataAtual = new Date();
+            const dataNascimentoDate = new Date(dataNascimento);
+            
+            // Verifica se a data de nascimento está no futuro
+            if (dataNascimentoDate > dataAtual) {
+                Swal.fire({
+                    title: "Erro",
+                    text: "A data de nascimento não pode ser no futuro.",
+                    icon: "error"
+                });
+                return false;
+            }
+
+            // Calcula a idade
+            const idade = dataAtual.getFullYear() - dataNascimentoDate.getFullYear();
+            const mes = dataAtual.getMonth() - dataNascimentoDate.getMonth();
+            const dia = dataAtual.getDate() - dataNascimentoDate.getDate();
+            
+            if (idade < 18 || (idade === 18 && (mes < 0 || (mes === 0 && dia < 0)))) {
+                Swal.fire({
+                    title: "Erro",
+                    text: "Você precisa ter pelo menos 18 anos para se cadastrar.",
+                    icon: "error"
+                });
+                return false;
+            }
+            
+            // Caso a data de nascimento seja válida e a idade seja >= 18
+            Swal.fire({
+                title: "Formulário Enviado",
+                text: "Parabéns! Seu formulário foi enviado com sucesso!",
+                icon: "success"
+            });
+
+            // Limpa o formulário após o envio bem-sucedido
+            document.querySelector('form').reset();
+
+            return true; // O formulário será enviado
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 NTTDATA - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

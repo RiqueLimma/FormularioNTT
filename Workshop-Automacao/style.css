@@ -1,0 +1,248 @@
+/* Estilos gerais */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100dvh; /* Garante que ocupe toda a altura da tela */
+    background: linear-gradient(135deg, #3a6073, #16222a);
+    color: #ffffff;
+}
+
+.logo-container {
+    margin-bottom: 20px; /* Espaço entre a logo e o formulário */
+}
+
+.logo {
+    width: 350px; /* Ajuste o tamanho da logo */
+    height: auto;
+}
+
+.form-container {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px; /* Largura máxima do formulário */
+}
+
+/* Container principal que envolve o formulário e logo */
+.container {
+    background: #ffffff;
+    border-radius: 12px;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    animation: fadeIn 0.8s ease-in-out;
+    color: #333;
+    box-sizing: border-box;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #14477b;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-transform: Comic;
+    letter-spacing: 2px;
+}
+
+/* Estilos do formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    position: relative;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 0.9rem;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.6);
+    outline: none;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+    font-size: 0.9rem;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Estilos para o checkbox e o label de "Aceitar termos e condições" */
+label[for="termos_condicoes"] {
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-left: 5px;
+    color: #555;
+}
+
+/* Estilo do checkbox */
+input[type="checkbox"] {
+    transform: scale(1.2); /* Aumenta o tamanho do checkbox */
+    margin-right: 10px; /* Espaço à direita do checkbox */
+}
+
+/* Personalização do texto ao lado do checkbox */
+label[for="termos_condicoes"] {
+    font-weight: normal;
+    color: #555;
+    font-size: 1rem; /* Tamanho da fonte ajustado */
+    line-height: 1.4;
+    transition: color 0.3s ease; /* Transição suave na cor */
+}
+
+input[type="checkbox"]:checked + label[for="termos_condicoes"] {
+    color: #007bff; /* Cor do texto quando marcado */
+}
+
+/* Estilos do botão de "Aceitar termos e condições" */
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+    /* Centralização */
+    display: block;
+    margin: 20px auto;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+button:active {
+    background-color: #003f7f;
+    transform: translateY(0);
+}
+
+input:valid {
+    border-color: #28a745;
+    box-shadow: 0 0 6px rgba(40, 167, 69, 0.6);
+}
+
+/* Rodapé fixo */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #bbb;
+    font-size: 0.8rem;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
+    background-image: url('Imagens/ImagemFundo.png'); /* Caminho da imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir toda a área da tela */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Não repete a imagem */
+    color: #ffffff;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8); /* Fundo transparente branco para dar contraste */
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    animation: fadeIn 0.8s ease-in-out;
+    color:#333;
+}
+
+/* Animação fadeIn */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
